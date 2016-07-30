@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:layout_margin="5dp"
+    android:padding="3dp"
+    android:elevation="7dp"
+    android:background="#ffffff">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imv_instructor"
+        android:scaleType="centerCrop"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#ab616161"
+        android:padding="4dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_student_name"
+            android:textSize="16sp"
+            android:text="QKLahpita"
+            android:textStyle="bold"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_student_phone_number"
+            android:textSize="14sp"
+            android:text="0123456789"
+            android:layout_below="@id/tv_student_name"
+            android:layout_marginTop="7dp"
+            android:textColor="#ffffff"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
