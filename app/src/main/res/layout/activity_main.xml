@@ -16,91 +16,79 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Employee"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30dp"
-        android:textColor="#000000"
-        android:layout_margin="5dp"
-        android:layout_weight="1"/>
+        android:text="Name:"
+        android:textSize="30sp" />
 
     <EditText
+        android:id="@+id/edtname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_edittext"
-        android:layout_margin="5dp"
-        android:hint="Name"
-        android:id="@+id/name_et"
-        android:layout_weight="1"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_edittext"
-        android:layout_margin="5dp"
-        android:hint="Age"
-        android:id="@+id/age_et"
-        android:layout_weight="1"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_edittext"
-        android:layout_margin="5dp"
-        android:hint="Address"
-        android:id="@+id/addr_et"
-        android:layout_weight="1"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_edittext"
-        android:layout_margin="5dp"
-        android:hint="Phone"
-        android:id="@+id/phone_et"
-        android:layout_weight="1"/>
+        android:textSize="30sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gender:"
-        android:layout_margin="5dp"
-        android:layout_weight="1"
-        android:gravity="center"/>
+        android:text="Birthday:"
+        android:textSize="30sp" />
 
-    <RadioGroup
+    <TextView
+        android:id="@+id/tvbd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_edittext"
+        android:textSize="30sp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/gender_rg"
-        android:layout_weight="1">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gay"
-            android:checked="true"
-            android:id="@+id/radio_gay"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Male"
-            android:id="@+id/radio_male"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Female"
-            android:id="@+id/radio_female"/>
-    </RadioGroup>
+        android:text="Address:"
+        android:textSize="30sp" />
+
+
+    <Spinner
+        android:id="@+id/birthplace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        ></Spinner>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone:"
+        android:textSize="30sp" />
+    <EditText
+        android:id="@+id/edtphone"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_edittext"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chon Anh:"
+        android:textSize="30sp" />
+    <Spinner
+        android:id="@+id/chon_anh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        ></Spinner>
 
     <Button
-        android:layout_width="250dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:text="SAVE"
-        android:textSize="30dp"
+        android:id="@+id/btnsave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:background="@drawable/custom_button"
-        android:id="@+id/save_button"
-        android:layout_margin="5dp"/>
+        android:paddingBottom="5dp"
+        android:paddingLeft="30dp"
+
+        android:paddingRight="30dp"
+        android:paddingTop="5dp"
+        android:text="SAVE"
+        android:textSize="30sp" />
 </LinearLayout>
