@@ -21,7 +21,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private ListView listView;
     private static List<PersonInfo> listEmployee = new ArrayList();
-    private MyAdapter myAdapter;
+
     private Button backButton;
 
     public ListActivity() {

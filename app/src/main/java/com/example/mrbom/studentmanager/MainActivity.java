@@ -36,15 +36,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void init() {
         edtname = (EditText) findViewById(R.id.edtname);
         tvbd = (TextView) findViewById(R.id.tvbd);
-        btnsave = (Button) findViewById(R.id.btn_add);
-        spinnerBirhPlace = (Spinner) findViewById(R.id.spinner_address);
+        btnsave = (Button) findViewById(R.id.btnsave);
+        spinnerBirhPlace = (Spinner) findViewById(R.id.birthplace);
 
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_add: {
+            case R.id.btnsave: {
                 if (edtname.getText().toString().isEmpty() || tvbd.getText().toString().isEmpty()) {
                     Toast.makeText(this, "Hãy Nhập Đủ Dữ Liệu", Toast.LENGTH_LONG).show();
                 } else {
