@@ -23,8 +23,6 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
     private static List<PersonInfo> listEmployee = new ArrayList();
     private MyAdapter myAdapter;
     private Button backButton;
-    private FrameLayout frameLayout;
-    private boolean isTwoPart = false;
 
     public ListActivity() {
     }
@@ -32,20 +30,9 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
     private void initializeUI() {
         this.listView = (ListView)this.findViewById(R.id.list_employee);
         this.backButton = (Button)this.findViewById(R.id.back_button);
-        this.frameLayout = (FrameLayout)this.findViewById(R.id.container);
-        if(this.frameLayout != null) {
-            this.isTwoPart = true;
-        } else {
-            this.isTwoPart = false;
-        }
-
         this.myAdapter = new MyAdapter(listEmployee, this);
         this.listView.setAdapter(this.myAdapter);
         this.listView.setOnItemClickListener(this);
-        if(this.isTwoPart) {
-            this.listView.performItemClick(null, 0, (long)this.listView.getFirstVisiblePosition());
-        }
-
         this.backButton.setOnClickListener(this);
     }
 
@@ -60,26 +47,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         this.initializeUI();
     }
 
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        this.setContentView(R.layout.activity_list);
-        this.initializeUI();
-    }
-
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        if(this.isTwoPart) {
-            DetailFragment detailFragment = new DetailFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(MainActivity.NAME_KEY, listEmployee.get(i).getName());
-            bundle.putString(MainActivity.AGE_KEY, listEmployee.get(i).getAge());
-            bundle.putString(MainActivity.PHONE_KEY, listEmployee.get(i).getPhone());
-            bundle.putString(MainActivity.ADDRESS_KEY, listEmployee.get(i).getAddress());
-            bundle.putString(MainActivity.GENDER_KEY, listEmployee.get(i).getGender());
-            detailFragment.setArguments(bundle);
-            FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.container, detailFragment);
-            fragmentTransaction.commit();
-        } else {
             Dialog dialog1 = new Dialog(this);
             dialog1.setContentView(R.layout.custom_dialog);
             dialog1.setTitle((listEmployee.get(i)).getName() + " Details");
@@ -89,7 +57,6 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
             ((TextView)dialog1.findViewById(R.id.dialog_phonetext)).setText("Phone: " + listEmployee.get(i).getPhone());
             ((TextView)dialog1.findViewById(R.id.dialog_gendertext)).setText("Gender: " + listEmployee.get(i).getGender());
             dialog1.show();
-        }
     }
 
     public void onClick(View view) {
