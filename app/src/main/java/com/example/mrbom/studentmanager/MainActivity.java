@@ -1,69 +1,76 @@
 package com.example.mrbom.studentmanager;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private EditText nameEditText;
-    private EditText ageEditText;
-    private EditText phoneEditText;
-    private EditText addressEditText;
-    private Button saveButton;
-    private RadioGroup radioGroup;
-    private RadioButton radioButton;
-    public static final String NAME_KEY = "name";
-    public static final String AGE_KEY = "age";
-    public static final String PHONE_KEY = "phone";
-    public static final String ADDRESS_KEY = "address";
-    public static final String GENDER_KEY = "gender";
-
+    EditText edtname;
+    TextView tvbd;
+    String s;
+    Button btnsave;
+    Spinner spinnerBirhPlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        nameEditText = (EditText) findViewById(R.id.name_et);
-        ageEditText = (EditText) findViewById(R.id.age_et);
-        phoneEditText = (EditText) findViewById(R.id.phone_et);
-        addressEditText = (EditText) findViewById(R.id.addr_et);
-        saveButton = (Button) findViewById(R.id.save_button);
-        radioGroup = (RadioGroup) findViewById(R.id.gender_rg);
-
-        saveButton.setOnClickListener(this);
+        init();
+        String arr[] = {"Hà Nội", "Hà Nam", "Hà Tây", "Hà Đông"};
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arr);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spinnerBirhPlace.setAdapter(arrayAdapter);
+        tvbd.setOnClickListener(this);
+        btnsave.setOnClickListener(this);
+    }
+    public void init() {
+        edtname = (EditText) findViewById(R.id.edtname);
+        tvbd = (TextView) findViewById(R.id.tvbd);
+        btnsave = (Button) findViewById(R.id.btn_add);
+        spinnerBirhPlace = (Spinner) findViewById(R.id.spinner_address);
 
     }
 
     @Override
     public void onClick(View view) {
-        Bundle bundle = new Bundle();
-        Intent intent = new Intent(this,ListActivity.class);
         switch (view.getId()) {
-            case R.id.save_button:
-                if(!nameEditText.getText().toString().isEmpty() &&
-                        !ageEditText.getText().toString().isEmpty() &&
-                        !phoneEditText.getText().toString().isEmpty() &&
-                        !addressEditText.getText().toString().isEmpty()) {
-                    int radioButtonCheckedId = radioGroup.getCheckedRadioButtonId();
-                    radioButton = (RadioButton) findViewById(radioButtonCheckedId);
-                    bundle.putString(GENDER_KEY,radioButton.getText().toString());
-                    bundle.putString(NAME_KEY,nameEditText.getText().toString());
-                    bundle.putString(AGE_KEY,ageEditText.getText().toString());
-                    bundle.putString(PHONE_KEY,phoneEditText.getText().toString());
-                    bundle.putString(ADDRESS_KEY,addressEditText.getText().toString());
-                    intent.putExtras(bundle);
-                    startActivity(intent);
+            case R.id.btn_add: {
+                if (edtname.getText().toString().isEmpty() || tvbd.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "Hãy Nhập Đủ Dữ Liệu", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+
+                    s = "Name: "+ edtname.getText().toString()+"\n\n"+"Birthday: "+tvbd.getText().toString()+"\n\n"+"BirhPlace:"+spinnerBirhPlace.getSelectedItem().toString()+"\n\n";
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("kq", s);
+
+//                    Intent intent = new Intent(AddEmployee.this, EmployeeDetail.class);
+//                    intent.putExtra("data", bundle);
+//                    startActivity(intent);
                 }
                 break;
+            }
+            case R.id.tvbd: {
+                DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        tvbd.setText(datePicker.getDayOfMonth() + " / " + (datePicker.getMonth() + 1) + " / " + datePicker.getYear());
+                    }
+                };
+                DatePickerDialog datePickerDialog = new DatePickerDialog(this, onDateSetListener, 1995, 2, 28);
+                datePickerDialog.show();
+                break;
+            }
         }
+
+
     }
 }
